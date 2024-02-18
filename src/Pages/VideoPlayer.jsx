@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { PlayList, VideoPlayerComponent } from "../Components";
 import videoThumbnails from "../video.json";
@@ -8,10 +8,16 @@ const VideoPlayer = () => {
   const singleData = location?.state;
 
   const [currentVideo, setCurrentVideo] = useState(singleData?.sources[0]);
+  const [newVideo, setnewVideo] = useState();
+
+  useEffect(() => {
+    setCurrentVideo(singleData?.sources[0]);
+  }, [singleData]);
 
   const handleSelectVideo = (data) => {
     console.log("data: ", data);
     setCurrentVideo(data?.sources[0]);
+    setnewVideo(data?.title);
   };
 
   return (
@@ -23,9 +29,9 @@ const VideoPlayer = () => {
         <div className="flex flex-col md:flex-row">
           {/* Video player component */}
           <div className="w-full md:w-3/4 max-w-screen-lg md:ml-4 mb-4 md:mb-0">
-            <VideoPlayerComponent videoUrl={currentVideo} />
+            <VideoPlayerComponent key={currentVideo} videoUrl={currentVideo} />
             <h4 className="text-2xl md:text-3xl text-white text-center md:text-left">
-              {singleData?.title}
+              {newVideo ? newVideo : singleData?.title}
             </h4>
           </div>
 
