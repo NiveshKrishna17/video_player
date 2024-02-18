@@ -5,7 +5,7 @@ import videoThumbnails from "../video.json";
 const Home = () => {
   return (
     <Fragment>
-      <div className="container mx-auto w-auto py-8 bg-indigo-800 h-screen">
+      <div className="container mx-auto w-auto py-8 bg-indigo-800 h-auto">
         <h1 className="text-3xl font-bold mb-4 mx-2 text-white">
           Task - Video Player
         </h1>
