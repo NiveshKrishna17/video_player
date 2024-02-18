@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { PlayList, VideoPlayerComponent } from "../Components";
 import videoThumbnails from "../video.json";
 
@@ -23,9 +23,11 @@ const VideoPlayer = () => {
   return (
     <Fragment>
       <div className="bg-indigo-800 h-auto w-auto p-4">
-        <h1 className="text-3xl font-Poppins text-justify text-white mb-4">
-          Video Player
-        </h1>
+        <Link to="/">
+          <h1 className="text-3xl font-Poppins text-justify text-white mb-4 cursor-pointer">
+            Video Player
+          </h1>
+        </Link>
         <div className="flex flex-col md:flex-row">
           {/* Video player component */}
           <div className="w-full md:w-3/4 max-w-screen-lg md:ml-4 mb-4 md:mb-0">
